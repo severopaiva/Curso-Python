@@ -1,0 +1,87 @@
+import random
+
+vetor = []
+
+
+# Classifica o vetor VET pelo método da Bolha
+def bolha (VET):
+      TROCA = True
+      while TROCA:
+             print (VET)
+             TROCA = False
+             for I in range (len(VET)-1):
+                      if   VET[I] > VET [I+1]:
+                           TROCA = True
+                           AUX = VET[I]
+                           VET[I] = VET [I+1]
+                           VET[I+1] = AUX
+
+
+# Classificação pelo método da Seleção
+def selecao (VET):
+    for I in range (len(VET)):
+        print (VET)
+        MIN = I
+        for J in range (I+1,len(VET)):
+            if VET [J] < VET [MIN ]:
+               MIN = J
+        AUX = VET[MIN]
+        VET [MIN] = VET[I]
+        VET [I] = AUX
+    return
+
+# Classificação pelo método da Inserção
+def insercao (VET):
+      for I in range (1,len(VET)):
+            print (VET)
+            X = VET[I]
+            J = I - 1
+            while (X < VET[J]) and (J>=0):
+                  VET [J+1] = VET [J]
+                  J = J - 1
+                  VET [J+1] = X
+      return
+
+def geravetor(n):
+    for i in range(n):
+         vetor.append(random.randint(1,100))
+    return
+   
+def entravetor(n):
+    for i in range(n):
+         vetor.append(int(input("\nDigite elemento vetor: ")))
+    return
+
+
+#Programa Principal
+
+print ("\nPrograma classifica conjunto de números pelos métodos Bolha/Seleção/Inserção")
+print ("\nPermite digitar ou gerar os números a classificar")
+
+n = int(input("\nQuantos elementos você quer classificar? "))
+
+tipogera = input("\nDeseja digitar (D ou d) ou gerar elementos aleatoriamente (A ou a): ")
+if tipogera == "A" or tipogera == "a":
+   geravetor(n)
+else:
+    entravetor(n)
+    
+print ("\nNúmeros a classificar: ", vetor)
+clas = int(input("\nEscolha o método a ser usado (1-Bolha - 2-Seleção - 3-Inserção: "))
+if clas == 1:
+    bolha(vetor)
+    nomemetodo = "Bolha"
+else:
+    if clas == 2:
+       selecao(vetor)
+       nomemetodo = "Seleção"
+    else:
+       if clas == 3:
+          insercao(vetor)
+          nomemetodo = "Inserção"
+       else:
+          print ("Erro !")
+          nomemetodo=""
+
+if nomemetodo != "":
+   print ("\nMétodo: ",nomemetodo, " Numeros classificados: ", vetor)
