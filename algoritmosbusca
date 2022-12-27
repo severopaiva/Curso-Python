@@ -1,0 +1,113 @@
+import random
+
+vetor = []
+
+def  SEQ(VETOR,PROCURA):
+       ACHOU = False
+       TAM = len(VETOR) - 1
+       IND =0
+       while (IND <= TAM) and (not ACHOU):
+              if  VETOR [IND] == PROCURA:
+                  ACHOU = True
+              else:
+                  IND = IND + 1
+       if   ACHOU:
+            return IND
+       else:
+            return -1
+
+def SEQORD (VETOR, PROCURA):
+    IND = 0
+    TAM = len(VETOR) - 1
+    ACHOU = False
+    while (IND <= TAM) and (not ACHOU) and (VETOR [IND] <= PROCURA):
+      if  VETOR [IND] == PROCURA:
+          ACHOU = True
+      else:
+          IND = IND + 1
+    if   ACHOU:
+         return IND
+    else:
+         return -1
+
+def  Binaria (VET, PROCURA):
+     ACHOU = False
+     PRIMEIRO = 0
+     ULTIMO = len (VET) - 1
+     while (PRIMEIRO <= ULTIMO) and (not ACHOU):
+             MEIO = (PRIMEIRO + ULTIMO) // 2
+             if  VET[MEIO] == PROCURA:
+                 ACHOU = True;
+             elif VET[MEIO] > PROCURA:
+                 ULTIMO = MEIO - 1
+             else:
+                 PRIMEIRO = MEIO + 1
+     if  ACHOU:
+          return MEIO		
+     else:
+          return -1
+
+# Classifica o vetor VET pelo método da Bolha
+def bolha (VET):
+      TROCA = True
+      while TROCA:
+             print (VET)
+             TROCA = False
+             for I in range (len(VET)-1):
+                      if   VET[I] > VET [I+1]:
+                           TROCA = True
+                           AUX = VET[I]
+                           VET[I] = VET [I+1]
+                           VET[I+1] = AUX
+
+
+
+def geravetor(n):
+    for i in range(n):
+         vetor.append(random.randint(1,100))
+    return
+   
+def entravetor(n):
+    for i in range(n):
+         vetor.append(int(input("\nDigite elemento vetor: ")))
+    return
+
+
+#Programa Principal
+
+print ("\nPrograma Pesquisa em conjunto de números pelos métodos SEQ/SEQ ORD/BINÁRIA")
+print ("\nPermite digitar ou gerar os números a pesquisar")
+
+n = int(input("\nQuantos elementos você quer gerar? "))
+
+tipogera = input("\nDeseja digitar (D ou d) ou gerar elementos aleatoriamente (A ou a): ")
+if tipogera == "A" or tipogera == "a":
+       geravetor(n)
+else:
+       entravetor(n)
+    
+print ("\nNúmeros a Pesquisar: ", vetor)
+busca = int(input("\nEscolha o método a ser usado(1-Sequencial - 2-Sequencial Ordenada - 3-Busca Binaria: "))
+proc = int(input("Digite número a pesquisar: "))
+if busca == 1:
+    retorno = SEQ (vetor,proc)
+    nomemetodo = "SEQUENCIAL"
+else:
+    if busca == 2:
+       bolha(vetor)
+       retorno = SEQORD(vetor,proc)
+       nomemetodo = "SEQ ORDENADA"
+    else:
+       if busca == 3:
+          bolha(vetor)
+          retorno = Binaria(vetor,proc)
+          nomemetodo = "Binária"
+       else:
+          print ("Erro !")
+          nomemetodo=""
+
+if nomemetodo != "" and retorno != -1:
+   print ("\nMétodo: ",nomemetodo, " O elemento ", proc, " está na posição ", retorno)
+else:
+   print ("\nElemento ", proc, " não encontrado em ", vetor)
+   
