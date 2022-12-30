@@ -1,0 +1,48 @@
+LISTA = []
+
+def INSERESEQ (LISTA,POSICAO, ELEMENTO):
+    if  len(LISTA) > 0:
+           LISTA.append("")
+           for i in range(len(LISTA)-1,POSICAO,-1):
+               LISTA [i] = LISTA [i-1]
+           LISTA [POSICAO] = ELEMENTO
+
+    else:
+           LISTA.append (ELEMENTO)
+    return
+
+def   REMOVESEQ (LISTA,POSICAO):
+    if len(LISTA) == 0 or POSICAO > len(LISTA):
+           TRATAERRO("ERRO REMOÇÃO LISTA")
+    else:
+        del LISTA [POSICAO]
+    return
+
+def TRATAERRO(MSG):
+    print (MSG)
+
+#Programa Principal
+
+print ("Implementação LISTA SEQUENCIAL")
+INSERESEQ (LISTA,0, "Ana")
+print (LISTA)
+INSERESEQ (LISTA,1, "Zacarias")
+print(LISTA)
+INSERESEQ (LISTA,1, "Maria")
+print(LISTA)
+INSERESEQ (LISTA,2, "Severo")
+print(LISTA)
+
+REMOVESEQ(LISTA,2)
+print(LISTA)
+
+REMOVESEQ(LISTA,0)
+print(LISTA)
+
+REMOVESEQ(LISTA,1)
+print(LISTA)
+
+REMOVESEQ(LISTA,0)
+print(LISTA)
+
+aux = input("Qualquer tecla")
