@@ -1,0 +1,40 @@
+#DEMONSTRAÇÃO XOR E ROTATE
+
+# CONVERSAO ENTRE SISTEMAS DE NUMERAÇÃO
+def conv(n, base):
+    conv_string = "0123456789ABCDEF"
+    if n < base:
+       return conv_string[n]
+    else:
+       return conv(int (n / base), base) + conv_string [n % base]
+    
+# Caracter ASCII de entrada
+carac1 = input("Digite o 1o. caractere a ser usado no XOR: ")
+
+# Valor ASCII a ser usado no XOR
+carac2 = input("Digite o 2o. carcatere a ser usado no XOR: ")
+
+n1 = ord(carac1)  
+n2 = ord(carac2)
+# Converte em Binário o Código Ascii
+bin1 = conv(n1,2).zfill(8)
+bin2 = conv(n2,2).zfill(8)
+
+print (carac1,"o seu código Ascii é: ", str(n1).zfill(3)," em binário: ",bin1)
+print (carac2,"o seu código Ascii é: ", str(n2).zfill(3)," em binário: ",bin2)
+
+# Operação XOR
+result = ord(carac1) ^ ord(carac2)
+binxor = conv(result,2).zfill(8)
+
+# Exibição do resultado como ASCII e Binario
+print("Resultado:",chr(result).zfill(1),"Seu código: ",str(result).zfill(3)," em binário: ",binxor)
+
+
+deslocamento = 1  # Número de posições a serem deslocadas para a direita
+
+resultado1 = n1 >> deslocamento
+resultado2 = n2 >> deslocamento
+
+print("\nDeslocamento: ",str(n1).zfill(3), bin1,str(resultado1).zfill(3),conv(resultado1,2).zfill(8))
+print("Deslocamento: ",str(n2).zfill(3), bin2,str(resultado2).zfill(3),conv(resultado2,2).zfill(8))
